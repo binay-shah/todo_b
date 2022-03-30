@@ -1,6 +1,7 @@
 package com.example.todoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     public static  final String TAG = MainActivity.class.getSimpleName();
     private Repository repository;
     private List<Task> taskList;
+    private RecyclerView recyclerView;
+    private TodoAdapter adapter;
 
 
     @Override
@@ -20,19 +23,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recyclerView = findViewById(R.id.todo_list);
+
+
         repository = Repository.getInstance();
 
         taskList = repository.getAllTask();
 
-        Log.d(TAG, "taskList size"+taskList.size());
+        adapter = new TodoAdapter(taskList);
+
+        recyclerView.setAdapter(adapter);
 
 
-        for (Task task: taskList){
-            Log.d(TAG, "task"+task);
-        }
-        
-        repository.delete(taskList.get(0));
-        Log.d(TAG, "taskList size"+taskList.size());
+
+
 
     }
 }
