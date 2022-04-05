@@ -14,11 +14,11 @@ public class Repository {
 
     private  Repository() {
         taskList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Task task = new Task();
-            task.setTitle("Task"+ i);
-            taskList.add(task);
-        }
+//        for (int i = 0; i < 10; i++) {
+//            Task task = new Task();
+//            task.setTitle("Task"+ i);
+//            taskList.add(task);
+//        }
     }
 
     public static Repository getInstance(){
@@ -30,10 +30,10 @@ public class Repository {
 
 
     public Task getTaskById(UUID id){
-        for(Task item : taskList){
-            if(item.getId() == id)
-                return item;
-        }
+//        for(Task item : taskList){
+//            if(item.getId() == id)
+//                return item;
+//        }
         return null;
     }
 
@@ -47,14 +47,14 @@ public class Repository {
     }
 
     public void update(Task task){
-        Task oldTask = getTaskById(task.getId());
-        oldTask.setTitle(task.getTitle());
-        oldTask.setDescription(task.getDescription());
-        oldTask.setUpdatedDate(new Date());
+//        Task oldTask = getTaskById(task.getId());
+//        oldTask.setTitle(task.getTitle());
+//        oldTask.setDescription(task.getDescription());
+//        oldTask.setUpdatedDate(new Date());
     }
 
     public void delete(Task task){
-        Task task1 = getTaskById(task.getId());
-        taskList.remove(task);
-    }
+//        Task task1 = getTaskById(task.getId());
+//        taskList.remove(task);
+   }
 }
